@@ -6,15 +6,22 @@ import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
 
-    public Dimension d = new Dimension(1250, 800);
+    private PanelPrincipal dp;
+    public Dimension d = new Dimension(1300, 800);
 
     public Ventana() {
-        
+        dp = new PanelPrincipal();
+
         this.setLayout(new BorderLayout());
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Activa cierre x
-        this.setSize(d);                                                           //Establece el Tamaño de la Ventana
-        this.setVisible(true);                                                  //Visibiliza la ventana
-        setLocationRelativeTo(null);                                    //Centra la aparicion de la Ventana
-        
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setSize(d);
+        dp.setLayout(null);
+       
+
+        setLocationRelativeTo(null);
+         this.add(dp);
+        this.setVisible(true);
+
+
     }
 }
