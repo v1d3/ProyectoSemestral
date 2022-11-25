@@ -2,6 +2,8 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Label;
 import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
@@ -16,11 +18,20 @@ public class Ventana extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(d);
         dp.setLayout(null);
-       
 
         setLocationRelativeTo(null);
-         this.add(dp);
+        this.add(dp);
         this.setVisible(true);
+/////////////////////////////////////////////////////////////
+
+        /*Label l = new Label();
+        l.setText("This is a demonstration");
+        dp.add(l);*/
+
+        Teclado k = new Teclado();
+      this.addKeyListener(k);
+/////////////////////////////////////////////////////////////
 
     }
+
 }
