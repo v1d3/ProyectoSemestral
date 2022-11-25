@@ -12,8 +12,7 @@ public class PanelPrincipal extends JPanel {
 
     public void paint(Graphics g) {
         super.paint(g);
-        g.setColor(Color.black);
-        g.fillRect(280, 30, 750, 700);
+        
         g.setColor(Color.gray);
         g.fillRect(190, 500, 70, 150); // vertical
         g.fillRect(30, 580, 150, 70);
