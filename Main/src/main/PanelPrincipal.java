@@ -2,6 +2,9 @@ package main;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
+import static java.awt.Font.BOLD;
+import static java.awt.Font.PLAIN;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
@@ -25,35 +28,49 @@ public class PanelPrincipal extends JPanel implements KeyListener {
     public void paint(Graphics g) {
         super.paint(g);
         g.setColor(Color.black);
-        
         g.fillRect(280, 30, 750, 700);
         
+        if (w) g.setColor(Color.green);
+        else g.setColor(Color.gray);
+        g.fillRect(180, 500, 75, 150); // vertical
         
-        g.fillRect(190, 500, 70, 150); // vertical
+        if (s) g.setColor(Color.green);
+        else g.setColor(Color.gray);
+        g.fillRect(50, 580, 100, 75);// 
         
-       
-        g.fillRect(30, 580, 150, 70);
-        
-       
+        if (a)g.setColor(Color.red);
+        else g.setColor(Color.gray);
         g.fillRect(1060, 580, 70, 70);// izq
-        
-       
+
+        if (d) g.setColor(Color.red);
+        else g.setColor(Color.gray);
         g.fillRect(1170, 580, 70, 70);//der
+        
+        
+       g.setColor(Color.BLACK);
+       g.setFont(new Font("ARIAL",PLAIN,32));
+       g.drawString(" ►",1185 , 625); 
+       g.drawString(" ◄ ",1065 , 625); 
+       g.drawString("║F║",60 , 610); 
+       g.setFont(new Font("Lucida Fax",BOLD,10));
+       g.drawString("Frenos",60 , 590);  
+       g.drawString("Acelerador",190 , 500);  
+        
 
         Graphics2D g2d = (Graphics2D) g;
         g2d.setStroke(new BasicStroke(70));
 
         g.setColor(Color.green);
-        
+
         for (int i = 0; i < 200; i += 100) {
             g.fillRect(325, 500 - i, 70, 100);// | despues de 1 vuelta
             g.fillRect(440 + i, 280, 100, 70);// _ despues de 2 vuelta
             g.fillRect(945, 185 + i, 70, 100);// |  despues de 5 vuelta
         }
         g.fillRect(800, 65, 100, 70);// - despues de 4 vuelta
-        g.fillRect(795 , 435, 100, 70);// _ despues de 6 vuelta
-        g.fillRect(445 , 615, 180, 70);// _ despues de ultima vuelta
-        
+        g.fillRect(795, 435, 100, 70);// _ despues de 6 vuelta
+        g.fillRect(445, 615, 180, 70);// _ despues de ultima vuelta
+
         g2d.drawArc(360, 550, 100, 100, 180, 90);//vuelta inicio
         g2d.drawArc(360, 315, 100, 100, 180, -90);// 2 vuelta
         g2d.drawArc(625, 170, 100, 145, 0, -90);// 3 vuelta
@@ -63,7 +80,7 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         g2d.drawArc(880, 370, 100, 100, 0, -90);// 6 vuelta
         g2d.drawArc(710, 470, 100, 100, 180, -90);//7 vuelta
         g2d.drawArc(610, 530, 100, 120, 0, -90);//ultima vuelta
-        
+
 // input
         if (w) {
             x += 0.4f * Math.cos(Math.toRadians(angle));
