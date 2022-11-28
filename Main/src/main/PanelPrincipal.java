@@ -21,8 +21,8 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         this.setBackground(Color.blue);
         r1 = new Ruedas(45, -30, true); //Adelante
         r2 = new Ruedas(-45, -45, false);
-        r3 = new Ruedas(-45, 45, false); 
-        r4 = new Ruedas(45, 30, true );  //Adelante
+        r3 = new Ruedas(-45, 45, false);
+        r4 = new Ruedas(45, 30, true);  //Adelante
     }
 
     /**
@@ -57,10 +57,10 @@ public class PanelPrincipal extends JPanel implements KeyListener {
             angle += 0.3f;
 
         }
-        r1.paint(g, x, y, angle, a); //Rueda
-        r2.paint(g, x, y, angle, a); //Rueda
-        r3.paint(g, x, y, angle, a); //Rueda
-        r4.paint(g, x, y, angle, a); //Rueda
+        r1.paint(g, x, y, angle, a, d); //Rueda
+        r2.paint(g, x, y, angle, a, d); //Rueda
+        r3.paint(g, x, y, angle, a, d); //Rueda
+        r4.paint(g, x, y, angle, a, d); //Rueda
         // update
         update_auto();
         // draw

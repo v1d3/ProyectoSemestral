@@ -19,10 +19,11 @@ public class Ruedas {
         this.t = t;
     }
 
-    public void paint(Graphics g, float x1, float y1, float angle1, boolean a) {
+    public void paint(Graphics g, float x1, float y1, float angle1, boolean a, boolean d) {
         ax = x1;
         ay = y1;
         this.a = a;
+        this.d = d;
         aAngle = angle1; //Guardamos la variable del padre para calcular la posicion real de la rueda
         /*if (w) {
         
@@ -36,17 +37,16 @@ public class Ruedas {
         if (a) {
             if (angle > (angle1 - 45)) {
                 angle -= 0.8f;
-                System.out.println("SIKE");
-            }
-        }
-        if (d) {
-            if (angle > (angle1 - 45)) {
-                angle += 0.8f;
-                System.out.println("SIKE");
 
             }
         }
-        if (!a && !d && Math.abs(angle - aAngle) > 0.8f) {
+        if (d) {
+            if (angle < (angle1 + 45)) {
+                angle += 0.8f;
+
+            }
+        }
+        if (!a && !d && Math.abs(angle - aAngle) > 0.8f) { //Si el auto no esta doblando
             if (angle > aAngle) {
                 angle -= 2f;
             } else {
