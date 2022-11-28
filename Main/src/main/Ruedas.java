@@ -13,7 +13,7 @@ public class Ruedas {
     public Ruedas(float x, float y, boolean t) {
         this.x = x;
         this.y = y;
-        this.t = t;
+        this.t = t; //Variable para definir si es rueda delantera o trasera
     }
 
     public void paint(Graphics g, float x1, float y1, float angle1, boolean a, boolean d) {
@@ -22,14 +22,7 @@ public class Ruedas {
         this.a = a;
         this.d = d;
         aAngle = angle1; //Guardamos la variable del padre para calcular la posicion real de la rueda
-        /*if (w) {
-            x += 0.1f * Math.cos(Math.toRadians(angle));
-            y += 0.1f * Math.sin(Math.toRadians(angle));
-        }
-        if (s) {
-            x -= 0.1f * Math.cos(Math.toRadians(angle));
-            y -= 0.1f * Math.sin(Math.toRadians(angle));
-        }*/
+        
         if (a) {
             if (angle > (angle1 - 45)) {
                 angle -= 0.8f;
