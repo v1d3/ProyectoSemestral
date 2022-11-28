@@ -37,40 +37,62 @@ public class PanelPrincipal extends JPanel implements KeyListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.setColor(Color.black);
-        g.fillRect(280, 30, 750, 700);
-        
-        if (w) g.setColor(Color.green);
-        else g.setColor(Color.gray);
-        g.fillRect(180, 500, 75, 150); // vertical
-        
-        if (s) g.setColor(Color.green);
-        else g.setColor(Color.gray);
-        g.fillRect(50, 580, 100, 75);// 
-        
-        if (a)g.setColor(Color.red);
-        else g.setColor(Color.gray);
-        g.fillRect(1060, 580, 70, 70);// izq
-
-        if (d) g.setColor(Color.red);
-        else g.setColor(Color.gray);
-        g.fillRect(1170, 580, 70, 70);//der
-        
-        
-       g.setColor(Color.BLACK);
-       g.setFont(new Font("ARIAL",PLAIN,32));
-       g.drawString(" ►",1185 , 625); 
-       g.drawString(" ◄ ",1065 , 625); 
-       g.drawString("║F║",60 , 610); 
-       g.setFont(new Font("Lucida Fax",BOLD,10));
-       g.drawString("Frenos",60 , 590);  
-       g.drawString("Acelerador",190 , 500);  
-        
-
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setStroke(new BasicStroke(70));
-
         g.setColor(Color.green);
+        g.fillRect(30, 30, 950, 700);
+        g.setColor(Color.white);
+        g.fillRect(30, 30, 950, 20);//v
+        g.fillRect(30, 710, 950, 20);//v
+        g.fillRect(30, 30, 23, 700);//h
+        g.fillRect(965, 30, 23, 700);//h
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("ARIAL", PLAIN, 16));
+        for (int i = 0; i < 875; i += 175) {
+            g.drawString("▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀", 30 + i, 45);
+            g.drawString("▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀", 30 + i, 725);
+        }
+        for (int i = 0; i < 670; i += 20) {
+            g.drawString("▀▄", 30 , 45+i);
+            g.drawString("▀▄", 965, 55+i);
+        }
+        if (w) {
+            g.setColor(Color.green);
+        } else {
+            g.setColor(Color.gray);
+        }
+        g.fillRect(1090, 500, 70, 70); // vertical ARRIBA
+
+        if (s) {
+            g.setColor(Color.green);
+        } else {
+            g.setColor(Color.gray);
+        }
+        g.fillRect(1090, 580, 70, 70);// vertical ABAJO
+
+        if (a) {
+            g.setColor(Color.red);
+        } else {
+            g.setColor(Color.gray);
+        }
+        g.fillRect(1010, 580, 70, 70);// izq
+
+        if (d) {
+            g.setColor(Color.red);
+        } else {
+            g.setColor(Color.gray);
+        }
+        g.fillRect(1170, 580, 70, 70);//der
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("ARIAL", PLAIN, 32));
+        g.drawString(" ►", 1185, 625);
+        g.drawString(" ◄", 1015, 625);
+        g.drawString("▲", 1110, 545);
+        g.drawString("▼", 1110, 628);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setStroke(new BasicStroke(80));
+
+        g.setColor(Color.gray);
 
         for (int i = 0; i < 200; i += 100) {
             g.fillRect(325, 500 - i, 70, 100);// | despues de 1 vuelta
@@ -131,17 +153,17 @@ public class PanelPrincipal extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W) {
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
             w = true;
         }
-        if (e.getKeyCode() == KeyEvent.VK_A) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             a = true;
             a1 = true;
         }
-        if (e.getKeyCode() == KeyEvent.VK_S) {
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             s = true;
         }
-        if (e.getKeyCode() == KeyEvent.VK_D) {
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             d = true;
             d1 = true;
         }
@@ -149,16 +171,16 @@ public class PanelPrincipal extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W) {
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
             w = false;
         }
-        if (e.getKeyCode() == KeyEvent.VK_A) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             a = false;
         }
-        if (e.getKeyCode() == KeyEvent.VK_S) {
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             s = false;
         }
-        if (e.getKeyCode() == KeyEvent.VK_D) {
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             d = false;
         }
     }
