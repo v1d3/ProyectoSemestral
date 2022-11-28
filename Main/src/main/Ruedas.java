@@ -5,12 +5,9 @@ import java.awt.*;
 public class Ruedas {
 
     boolean a, d, t;
-    float x;
-    float y;
+    float x, y;
     float ax, ay, aAngle;
     float angle = 0f;
-    float altura;
-    float distancia;
     Polygon p;
 
     public Ruedas(float x, float y, boolean t) {
@@ -26,7 +23,6 @@ public class Ruedas {
         this.d = d;
         aAngle = angle1; //Guardamos la variable del padre para calcular la posicion real de la rueda
         /*if (w) {
-        
             x += 0.1f * Math.cos(Math.toRadians(angle));
             y += 0.1f * Math.sin(Math.toRadians(angle));
         }

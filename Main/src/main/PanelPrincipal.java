@@ -37,35 +37,45 @@ public class PanelPrincipal extends JPanel implements KeyListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.setColor(Color.black);
+        g.setColor(Color.gray);
         g.fillRect(280, 30, 750, 700);
-        
-        if (w) g.setColor(Color.green);
-        else g.setColor(Color.gray);
+
+        if (w) {
+            g.setColor(Color.green);
+        } else {
+            g.setColor(Color.gray);
+        }
         g.fillRect(180, 500, 75, 150); // vertical
-        
-        if (s) g.setColor(Color.green);
-        else g.setColor(Color.gray);
+
+        if (s) {
+            g.setColor(Color.green);
+        } else {
+            g.setColor(Color.gray);
+        }
         g.fillRect(50, 580, 100, 75);// 
-        
-        if (a)g.setColor(Color.red);
-        else g.setColor(Color.gray);
+
+        if (a) {
+            g.setColor(Color.red);
+        } else {
+            g.setColor(Color.gray);
+        }
         g.fillRect(1060, 580, 70, 70);// izq
 
-        if (d) g.setColor(Color.red);
-        else g.setColor(Color.gray);
+        if (d) {
+            g.setColor(Color.red);
+        } else {
+            g.setColor(Color.gray);
+        }
         g.fillRect(1170, 580, 70, 70);//der
-        
-        
-       g.setColor(Color.BLACK);
-       g.setFont(new Font("ARIAL",PLAIN,32));
-       g.drawString(" ►",1185 , 625); 
-       g.drawString(" ◄ ",1065 , 625); 
-       g.drawString("║F║",60 , 610); 
-       g.setFont(new Font("Lucida Fax",BOLD,10));
-       g.drawString("Frenos",60 , 590);  
-       g.drawString("Acelerador",190 , 500);  
-        
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("ARIAL", PLAIN, 32));
+        g.drawString(" ►", 1185, 625);
+        g.drawString(" ◄ ", 1065, 625);
+        g.drawString("║F║", 60, 610);
+        g.setFont(new Font("Lucida Fax", BOLD, 10));
+        g.drawString("Frenos", 60, 590);
+        g.drawString("Acelerador", 190, 500);
 
         Graphics2D g2d = (Graphics2D) g;
         g2d.setStroke(new BasicStroke(70));
