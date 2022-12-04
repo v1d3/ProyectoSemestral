@@ -9,9 +9,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
+import javax.swing.JButton;
 
 public class PanelPrincipal extends JPanel implements KeyListener {
 
@@ -22,12 +25,14 @@ public class PanelPrincipal extends JPanel implements KeyListener {
     Polygon p;//Figura
     Ruedas r1, r2, r3, r4;
 
+    Color colorauto;
+
     public PanelPrincipal() {
         this.setBackground(Color.blue);
-        r1 = new Ruedas(45, -30, true); //Adelante
-        r2 = new Ruedas(-45, -45, false);
-        r3 = new Ruedas(-45, 45, false);
-        r4 = new Ruedas(45, 30, true);  //Adelante
+        r1 = new Ruedas(20, -15, true); //Adelante
+        r2 = new Ruedas(-20, -20, false);
+        r3 = new Ruedas(-20, 20, false);
+        r4 = new Ruedas(20, 15, true);  //Adelante
     }
 
     /**
@@ -52,9 +57,10 @@ public class PanelPrincipal extends JPanel implements KeyListener {
             g.drawString("▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀", 30 + i, 725);
         }
         for (int i = 0; i < 670; i += 20) {
-            g.drawString("▀▄", 30 , 45+i);
-            g.drawString("▀▄", 965, 55+i);
+            g.drawString("▀▄", 30, 45 + i);
+            g.drawString("▀▄", 965, 55 + i);
         }
+       
         if (w) {
             g.setColor(Color.green);
         } else {
@@ -89,30 +95,35 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         g.drawString(" ◄", 1015, 625);
         g.drawString("▲", 1110, 545);
         g.drawString("▼", 1110, 628);
+
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setStroke(new BasicStroke(80));
+        g2d.setStroke(new BasicStroke(85));
 
         g.setColor(Color.gray);
 
-        for (int i = 0; i < 200; i += 100) {
-            g.fillRect(325, 500 - i, 70, 100);// | despues de 1 vuelta
-            g.fillRect(440 + i, 280, 100, 70);// _ despues de 2 vuelta
-            g.fillRect(945, 185 + i, 70, 100);// |  despues de 5 vuelta
-        }
-        g.fillRect(800, 65, 100, 70);// - despues de 4 vuelta
-        g.fillRect(795, 435, 100, 70);// _ despues de 6 vuelta
-        g.fillRect(445, 615, 180, 70);// _ despues de ultima vuelta
-
-        g2d.drawArc(360, 550, 100, 100, 180, 90);//vuelta inicio
-        g2d.drawArc(360, 315, 100, 100, 180, -90);// 2 vuelta
-        g2d.drawArc(625, 170, 100, 145, 0, -90);// 3 vuelta
-        g2d.drawArc(725, 100, 100, 144, 180, -90);// 4 vuelta
-
-        g2d.drawArc(880, 100, 100, 100, 0, 90);// 5 vuelta
-        g2d.drawArc(880, 370, 100, 100, 0, -90);// 6 vuelta
-        g2d.drawArc(710, 470, 100, 100, 180, -90);//7 vuelta
-        g2d.drawArc(610, 530, 100, 120, 0, -90);//ultima vuelta
-
+        g2d.drawArc(140, 560, 100, 100, 180, 90);//vuelta inicio
+        g.fillRect(98, 415, 85, 155);// | despues de 1 vuelta
+        g2d.drawArc(140, 325, 100, 100, 180, -90);// 2 vuelta
+        g.fillRect(233, 283, 200, 85);// _ despues de 2 vuelta
+        g2d.drawArc(425, 180, 100, 145, 0, -90);// 3 vuelta
+        g2d.drawArc(525, 100, 100, 144, 180, -90);// 4 vuelta
+        g.fillRect(618, 58, 165, 85);// - despues de 4 vuelta
+        g2d.drawArc(775, 100, 100, 100, 0, 90);// 5 vuelta
+        g.fillRect(833, 185, 85, 200);// |  despues de 5 vuelta
+        g2d.drawArc(775, 370, 100, 100, 0, -90);// 6 vuelta
+        g.fillRect(593, 428, 190, 85);// _ despues de 6 vuelta
+        g2d.drawArc(500, 470, 100, 100, 180, -90);//7 vuelta
+        g2d.drawArc(400, 540, 100, 120, 0, -90);//ultima vuelta
+        g.fillRect(230, 618, 180, 85);// _ despues de ultima vuelta
+        
+       
+        g.setColor(Color.white);
+        g.fillRect(98, 455, 85, 40);//linea de partida
+        
+        g.setFont(new Font("ARIAL", PLAIN, 17));
+        g.setColor(Color.BLACK);
+        g.drawString("▀▄▀▄▀▄▀", 98, 470);
+        g.drawString("▀▄▀▄▀▄▀", 98, 490);
 // input
         if (w) {
             x += 0.4f * Math.cos(Math.toRadians(angle));
@@ -135,6 +146,7 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         r3.paint(g, x, y, angle, a, d); //Rueda
         r4.paint(g, x, y, angle, a, d); //Rueda
         // update
+
         update_auto();
         // draw
 
@@ -194,24 +206,34 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         // if ((x >= 340 && x <= 930) && (y >= 30 && y <= 670)) {
         //para los sigueintes puntos se considera que el auto está en horizontal (angulo 0)
         //punto adelante-izquierda del auto
-        float px = 55f;
-        float py = -10f;
+        float px = 20f;
+        float py = -7f;
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
 
         //punto atras-izquierda del auto
-        px = -55f; //Mientras mas positivo derechas
-        py = -30f; //Mientras mas positivo baja
+        px = -20f; //Mientras mas positivo derechas
+        py = -14f; //Mientras mas positivo baja
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
 
         //punto atras-derecha del auto
-        px = -55f;
-        py = 30f;
+        px = -20f;
+        py = 14f;
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
 
         //punto adelante-derecha del auto
-        px = 55f;
-        py = 10f;
+        px = 20f;
+        py = 7f;
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
         //}
     }
+
+    /*    public void actionPerformed(ActionEvent e) {
+
+       /* if (e.getSource() == boton1) {
+        
+            //Ventana v = new Ventana();
+
+            System.out.println("adios");
+        }
+    }*/
 }

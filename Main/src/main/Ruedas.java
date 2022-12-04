@@ -25,15 +25,7 @@ public class Ruedas {
         this.a = a;
         this.d = d;
         aAngle = angle1; //Guardamos la variable del padre para calcular la posicion real de la rueda
-        /*if (w) {
-        
-            x += 0.1f * Math.cos(Math.toRadians(angle));
-            y += 0.1f * Math.sin(Math.toRadians(angle));
-        }
-        if (s) {
-            x -= 0.1f * Math.cos(Math.toRadians(angle));
-            y -= 0.1f * Math.sin(Math.toRadians(angle));
-        }*/
+     
         if (a) {
             if (angle > (angle1 - 45)) {
                 angle -= 0.8f;
@@ -75,23 +67,23 @@ public class Ruedas {
         p = new Polygon();
 
         //Rueda, punto atras derecho 
-        float px = -20f;
-        float py = 10f;
+        float px = -10f;
+        float py = 5f;
         p.addPoint((int) (nx + ax + px * cos - py * sin), (int) (ny + ay + px * sin + py * cos));
 
         //Rueda, punto atras izquierdo
-        px = -20f;
-        py = -10f;
+        px = -10f;
+        py = -5f;
         p.addPoint((int) (nx + ax + px * cos - py * sin), (int) (ny + ay + px * sin + py * cos));
 
         //Rueda, punto delante izquierdo
-        px = 20f;
-        py = -10f;
+        px = 10f;
+        py = -5f;
         p.addPoint((int) (nx + ax + px * cos - py * sin), (int) (ny + ay + px * sin + py * cos));
 
         //Rueda, punto delante derecho
-        px = 20f;
-        py = 10f;
+        px = 10f;
+        py = 5f;
         p.addPoint((int) (nx + ax + px * cos - py * sin), (int) (ny + ay + px * sin + py * cos));
     }
 
