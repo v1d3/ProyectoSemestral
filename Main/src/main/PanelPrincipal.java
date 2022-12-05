@@ -8,17 +8,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
-import javax.swing.JButton;
 
 public class PanelPrincipal extends JPanel implements KeyListener {
 
     private boolean a, s, w, d;
-    float x = 525f; //Coordenada x
+    float x = 150f; //Coordenada x
     float y = 400f;//Coordenada y
     float angle = 270f; //Angulo
     Polygon p, linea;//Figura
@@ -130,7 +127,8 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         }
     }
 
-    public void paintMapa(Graphics g) {
+    public void paintMapa(Graphics g) { //_____Mapa 1
+     //Lineas del borde
         g.setColor(Color.green);
         g.fillRect(30, 30, 950, 700);
         g.setColor(Color.white);
