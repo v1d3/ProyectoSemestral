@@ -18,8 +18,14 @@ import javax.swing.JButton;
 public class PanelPrincipal extends JPanel implements KeyListener {
 
     private boolean a, s, w, d;
-    float x = 525f; //Coordenada x
-    float y = 400f;//Coordenada y
+     ///////PISTA LARGA//////////
+    //float x =140f; //Coordenada x
+    //float y = 535f;//Coordenada y
+    
+    ////////PISTA CORTA///////////
+    float x = 240f; //Coordenada x
+    float y = 535f;//Coordenada y
+    
     float angle = 270f; //Angulo
     Polygon p, linea;//Figura
     Ruedas r1, r2, r3, r4;
@@ -207,7 +213,7 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         g2d.setStroke(new BasicStroke(85));
 
         g.setColor(Color.gray);
-
+/*
         g2d.drawArc(140, 560, 100, 100, 180, 90);//vuelta inicio
         g.fillRect(98, 415, 85, 155);// | despues de 1 vuelta
         g2d.drawArc(140, 325, 100, 100, 180, -90);// 2 vuelta
@@ -222,14 +228,37 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         g2d.drawArc(500, 470, 100, 100, 180, -90);//7 vuelta
         g2d.drawArc(400, 540, 100, 120, 0, -90);//ultima vuelta
         g.fillRect(230, 618, 180, 85);// _ despues de ultima vuelta
-
         g.setColor(Color.white);
         g.fillRect(98, 455, 85, 40);//linea de partida
-
         g.setFont(new Font("ARIAL", PLAIN, 17));
         g.setColor(Color.BLACK);
         g.drawString("▀▄▀▄▀▄▀", 98, 470);
         g.drawString("▀▄▀▄▀▄▀", 98, 490);
+        */
+         
+        ////////////////////////////PISTA CORTA//////////////////////////////////////////////////
+       g2d.drawArc(240, 530, 100, 100, 180, 90);//vuelta inicio
+        g.fillRect(198, 438, 85, 100);// | despues de 1 vuelta
+        g2d.drawArc(240, 345, 100, 100, 180, -90);// 2 vuelta
+        g.fillRect(333, 303, 100, 85);// _ despues de 2 vuelta
+        g2d.drawArc(425, 200, 100, 145, 0, -90);// 3 vuelta
+        g2d.drawArc(525, 115, 100, 144, 180, -90);// 4 vuelta
+        g.fillRect(618, 73, 100, 85);// - despues de 4 vuelta
+        g2d.drawArc(710, 115, 100, 100, 0, 90);// 5 vuelta
+        g.fillRect(768, 205, 85, 145);// |  despues de 5 vuelta
+        g2d.drawArc(710, 340, 100, 100, 0, -90);// 6 vuelta
+        g.fillRect(610, 398, 110, 85);// _ despues de 6 vuelta
+        g2d.drawArc(520, 440, 100, 100, 180, -90);//7 vuelta
+        g2d.drawArc(420, 510, 100, 120, 0, -90);//ultima vuelta
+        g.fillRect(333, 588, 100, 85);// _ despues de ultima vuelta
+
+        g.setColor(Color.white);
+        g.fillRect(198, 455, 85, 40);//linea de partida
+        g.setFont(new Font("ARIAL", PLAIN, 17));
+        g.setColor(Color.BLACK);
+        g.drawString("▀▄▀▄▀▄▀", 198, 470);
+        g.drawString("▀▄▀▄▀▄▀", 198, 490);
+        ////////////////////////////////////////////////////////////////////////////////////////////////7
 // input
         if (w) {
             x += 0.4f * Math.cos(Math.toRadians(angle));
