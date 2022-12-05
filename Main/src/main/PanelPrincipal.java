@@ -23,7 +23,6 @@ public class PanelPrincipal extends JPanel implements KeyListener {
     float angle = 270f; //Angulo
     Polygon p, linea;//Figura
     Ruedas r1, r2, r3, r4;
-    Mapa mapa;
     float count = 0;
 
     Color colorauto;
@@ -35,7 +34,6 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         r2 = new Ruedas(-20, -20, false);
         r3 = new Ruedas(-20, 20, false);
         r4 = new Ruedas(20, 15, true);  //Adelante
-        mapa = new Mapa(90, 3, 4, 5, 4, 5, 6);
 
     }
 
@@ -48,14 +46,13 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         super.paint(g);
 
         //Paint de mapa
-        //paintMapa(g);
-        mapa.paint(g, 650, 400, 0);
+        paintMapa(g);
         // input
         if (w) {
             if (count <= 7) {
                 x += 0.4f * count * Math.cos(Math.toRadians(angle));
                 y += 0.4f * count * Math.sin(Math.toRadians(angle));
-                count += 0.01;
+                count += 0.0090;
             } else {
                 x += 0.4f * count * Math.cos(Math.toRadians(angle));
                 y += 0.4f * count * Math.sin(Math.toRadians(angle));
@@ -64,7 +61,7 @@ public class PanelPrincipal extends JPanel implements KeyListener {
             if (count > 0) {
                 x += 0.4f * count * Math.cos(Math.toRadians(angle));
                 y += 0.4f * count * Math.sin(Math.toRadians(angle));
-                count -= 0.02f;
+                count -= 0.01f;
             }
         }
         if (s) {
