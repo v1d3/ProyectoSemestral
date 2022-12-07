@@ -1,24 +1,16 @@
 package main;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import static java.awt.Font.PLAIN;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
-import javax.swing.JButton;
 
 public class PanelPrincipal extends JPanel implements KeyListener {
 
     public Botones bo;
     private boolean a, s, w, d;
+
     ///////PISTA LARGA//////////
     //float x =140f; //Coordenada x
     //float y = 535f;//Coordenada y
@@ -27,6 +19,10 @@ public class PanelPrincipal extends JPanel implements KeyListener {
     float x = 240f; //Coordenada x
     float y = 535f;//Coordenada y
 
+
+    Map1 map1;
+
+    
     float angle = 270f; //Angulo
     Polygon p, linea;//Figura
     Ruedas r1, r2, r3, r4;
@@ -37,10 +33,14 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         bo = new Botones();
 
         this.setBackground(Color.blue);
+
+        this.setBackground(Color.blue);
+        map1 = new Map1();
         r1 = new Ruedas(20, -15, true); //Adelante
         r2 = new Ruedas(-20, -20, false);
         r3 = new Ruedas(-20, 20, false);
         r4 = new Ruedas(20, 15, true);  //Adelante
+        map1.addRectanglemaps();
 
     }
 
@@ -81,8 +81,11 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         }
         if (d) {
             angle += 0.5f;
-
         }
+        if (collision()) { //---------------------------Falta ver donde poner las coordenadas despues de la colision
+            
+        }
+
         // update and paint wheels
         r1.paint(g, x, y, angle, a, d); //Rueda
         r2.paint(g, x, y, angle, a, d); //Rueda
@@ -144,6 +147,26 @@ public class PanelPrincipal extends JPanel implements KeyListener {
     public void paintMapa(Graphics g) {
 
         g.setColor(Color.green);//0,128,0
+
+  
+    }
+    public Rectangle getBounds() {
+        return new Rectangle((int) x, (int) y, 30, 35);
+    }
+
+    public boolean collision() {
+        for (int i = 0; i < map1.maps.size(); i++) {
+            if (getBounds().intersects(map1.getRectanglemaps(i))) {
+
+                return true;
+            }
+        }
+        return false;
+    }
+   @Override
+    public void paintMapa(Graphics g) { //_____Mapa 1
+        //Lineas del borde
+        g.setColor(Color.green);
         g.fillRect(30, 30, 950, 700);
         g.setColor(Color.white);
         g.fillRect(30, 30, 950, 20);//v
@@ -219,6 +242,8 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         g2d.setStroke(new BasicStroke(85));
 
         g.setColor(Color.gray);
+
+       
 
         if (bo.getpistaP() == true &&bo.getcambiopista()==true) {
             g2d.drawArc(240, 530, 100, 100, 180, 90);//vuelta inicio
@@ -302,10 +327,6 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         g.setColor(bo.getcolorauto());
         g.fillPolygon(p);   //paint del polygon del auto
 
-        Toolkit.getDefaultToolkit().sync(); //para la inestabilidad del framerate
-        g.dispose();
-
-        repaint();
     }
 
     public void update_auto() {
