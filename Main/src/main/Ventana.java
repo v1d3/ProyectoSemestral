@@ -9,16 +9,23 @@ public class Ventana extends JFrame {
     private PanelPrincipal panel;
     private Dimension WindowSize = new Dimension(1300, 800);
 
+
     public Ventana() {
         this.setLayout(new BorderLayout());
 
         panel = new PanelPrincipal();
+        this.add(panel);
         panel.setLayout(null);
-        this.add(panel);
+
         this.addKeyListener(panel);
+        ////////////////////////////////////////////
+        panel.addBotonestoPanel(panel);
+        panel.addButtonsCoordinate();
+        panel.getBoton().ActivateActionListener();
 
-        this.add(panel);
+        setFocusable(true);
 
+        /////////////////////////////////////////////////7
         InitWindow();
     }
 
