@@ -73,8 +73,11 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         if (d) {
             angle += 0.5f;
         }
-        if (collision()) { //---------------------------Falta ver donde poner las coordenadas despues de la colision
-            
+        if (collision()) { 
+            if(getBounds().intersects(map1.getRectanglemaps(0))) x = 220;
+            if(getBounds().intersects(map1.getRectanglemaps(1))) y = 100;
+            if(getBounds().intersects(map1.getRectanglemaps(2))) x = 800;
+            if(getBounds().intersects(map1.getRectanglemaps(3))) y = 630;
         }
 
         // update and paint wheels
