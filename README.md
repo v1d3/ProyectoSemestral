@@ -2,4 +2,4 @@
 
 # Cristobal Marcel Contreras Gajardo
 
-# Matias Mendoza
+# Matias Antonio Mendoza Vargas
