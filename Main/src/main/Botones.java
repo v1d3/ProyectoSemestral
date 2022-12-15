@@ -96,7 +96,7 @@ public class Botones implements ActionListener {
         ARojo.setBounds(1020, 170, 80, 50);
         ARosado.setBounds(1180, 170, 80, 50);
         AAzul.setBounds(1100, 170, 80, 50);
-        PistaP.setBounds(1045, 70, 80, 50);
-        PistaG.setBounds(1155, 70, 80, 50);
+        PistaP.setBounds(1035, 70, 100, 50);
+        PistaG.setBounds(1145, 70, 110, 50);
     }
 }
