@@ -6,16 +6,16 @@ import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
 
-    private final PanelPrincipal panel;
-    private static final Dimension WindowSize = new Dimension(1300, 800);
+    private  PanelPrincipal panel;
+    private  Dimension WindowSize = new Dimension(1300, 800);
 
     public Ventana() {
         this.setLayout(new BorderLayout());
 
         panel = new PanelPrincipal();
-        addKeyListener(panel);
         this.add(panel);
         panel.setLayout(null);
+        this.addKeyListener(panel);
         /////////////////////////////////////////////////
         InitWindow();
     }

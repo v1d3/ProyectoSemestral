@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
-public class Botones extends JButton implements ActionListener {
+public class Botones implements ActionListener {
 
     public JButton ARojo, ARosado, AAzul;
     public JButton PistaP, PistaG;
@@ -15,26 +15,30 @@ public class Botones extends JButton implements ActionListener {
     boolean pistaP = false;
     boolean pistaG = false;
     boolean cambio = false;
+    PanelPrincipal x;
 
-    public Botones() {
-
+    public Botones(PanelPrincipal x) {
+        this.x = x;
         ARojo = new JButton("Rojo");
         ARosado = new JButton("Rosado");
         AAzul = new JButton("Azul");
-        PistaP = new JButton("Chico");
-        PistaG = new JButton("grande");
+        PistaP = new JButton("Pista chica");
+        PistaG = new JButton("Pista grande");
     }
 
     public void ActivateActionListener() {
         ARojo.addActionListener(this);
         ARosado.addActionListener(this);
         AAzul.addActionListener(this);
+
         PistaP.addActionListener(this);
         PistaG.addActionListener(this);
 
         ARojo.setFocusable(false);
         ARosado.setFocusable(false);
-
+        AAzul.setFocusable(false);
+        PistaP.setFocusable(false);
+        PistaG.setFocusable(false);
     }
 
     @Override
@@ -52,10 +56,13 @@ public class Botones extends JButton implements ActionListener {
         if (e.getSource() == PistaP) {
             pistaP = true;
             cambio = true;
+            x.setCarPosition(240, 535);
         }
         if (e.getSource() == PistaG) {
             pistaG = true;
             cambio = false;
+            x.setCarPosition(140, 535);
+
         }
     }
 

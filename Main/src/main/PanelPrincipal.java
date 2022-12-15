@@ -22,10 +22,10 @@ public class PanelPrincipal extends JPanel implements KeyListener {
     float count = 0;
 
     public PanelPrincipal() {
-
-        bo = new Botones();
+        
+        bo = new Botones(this);
         this.setBackground(Color.blue);
-        bo.addBotonestoPanel(this);
+       bo.addBotonestoPanel(this);
         bo.ActivateActionListener();
         bo.addButtonsCoordinate();
 
@@ -48,21 +48,12 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         super.paint(g);
         //Paint de mapa
         paintMapa(g);
-
-        if (bo.getpistaP() == true && bo.getcambiopista() == true) {
-            x = 240f; //Coordenada x
-            y = 535f;//Coordenada y
-        }
-        if (bo.getpistaG() == true && bo.getcambiopista() == false) {
-            x = 140f; //Coordenada x
-            y = 535f;//Coordenada y
-        }
         // input ----------------------------------------
         if (w) {
             if (count <= 7) {
                 x += 0.4f * count * Math.cos(Math.toRadians(angle));
                 y += 0.4f * count * Math.sin(Math.toRadians(angle));
-                count += 0.0090;
+                count += 0.009;
             } else {
                 x += 0.4f * count * Math.cos(Math.toRadians(angle));
                 y += 0.4f * count * Math.sin(Math.toRadians(angle));
@@ -79,25 +70,25 @@ public class PanelPrincipal extends JPanel implements KeyListener {
             y -= 0.3f * Math.sin(Math.toRadians(angle));
         }
         if (a) {
-            angle -= 0.5f;
+            angle -= 1f;
 
         }
         if (d) {
-            angle += 0.5f;
+            angle += 1f;
         }
         if (collision()) {
-            if (bo.getpistaP() == true && bo.getcambiopista() == true) { //Mapa 1 (Chico)
-                if (getBounds().intersects(map1.getRectanglemaps(0))) {
+           if (bo.getpistaP() == true && bo.getcambiopista() == true) { //Mapa 1 (Chico)
+                if (PuntoIntersectaRectangulo(map1.getRectanglemaps(0))) {
                     x = 220;
                 }
-                if (getBounds().intersects(map1.getRectanglemaps(1))) {
+                if (PuntoIntersectaRectangulo(map1.getRectanglemaps(1))) {
                     y = 100;
                 }
-                if (getBounds().intersects(map1.getRectanglemaps(2))) {
-                    x = 800;
+                if (PuntoIntersectaRectangulo(map1.getRectanglemaps(2))) {
+                    x = 850;
                 }
-                if (getBounds().intersects(map1.getRectanglemaps(3))) {
-                    y = 630;
+                if (PuntoIntersectaRectangulo(map1.getRectanglemaps(3))) {
+                    y = 680;
                 }
             }
             if (bo.getpistaG() == true && bo.getcambiopista() == false) {
@@ -128,10 +119,9 @@ public class PanelPrincipal extends JPanel implements KeyListener {
     public void keyTyped(KeyEvent e) {
 
     }
-
+    
     @Override
     public void keyPressed(KeyEvent e) {
-
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             w = true;
         }
@@ -164,9 +154,9 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         }
     }
 
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, 30, 35);
+    
+    public boolean PuntoIntersectaRectangulo(Rectangle rec) {
+        return x > rec.x && x< rec.x + rec.width && y > rec.y && y < rec.y + rec.height;
     }
 
     public boolean collision() {
@@ -177,6 +167,10 @@ public class PanelPrincipal extends JPanel implements KeyListener {
             }
         }
         return false;
+    }
+    public void setCarPosition(int x, int y){
+        this.x = x;
+        this.y = y;
     }
 
     public void paintMapa(Graphics g) {

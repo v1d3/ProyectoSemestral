@@ -24,18 +24,18 @@ public class Ruedas {
         aAngle = angle1; //Guardamos la variable del padre para calcular la posicion real de la rueda
 
         if (a) {
-            if (angle > (angle1 - 45)) {
-                angle -= 0.8f;
+            if (angle > (angle1 - 25)) {
+                angle -= 5f;
 
             }
         }
         if (d) {
-            if (angle < (angle1 + 45)) {
-                angle += 0.8f;
+            if (angle < (angle1 + 25)) {
+                angle += 5f;
 
             }
         }
-        if (!a && !d && Math.abs(angle - aAngle) > 0.8f) { //Si el auto no esta doblando
+        if (!a && !d && Math.abs(angle - aAngle) > 0.8f) { //Si el auto no esta doblando, reposiciona las ruedas
             if (angle > aAngle) {
                 angle -= 2f;
             } else {
