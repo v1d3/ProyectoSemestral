@@ -56,12 +56,12 @@ public class Botones implements ActionListener {
         if (e.getSource() == PistaP) {
             pistaP = true;
             cambio = true;
-            x.setCarPosition(240, 535);
+            x.auto.getInstancia().setCarPosition(240, 535);
         }
         if (e.getSource() == PistaG) {
             pistaG = true;
             cambio = false;
-            x.setCarPosition(140, 535);
+            x.auto.getInstancia().setCarPosition(140, 535);
 
         }
     }
