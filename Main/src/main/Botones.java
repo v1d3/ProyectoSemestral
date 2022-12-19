@@ -25,7 +25,9 @@ public class Botones implements ActionListener {
         PistaP = new JButton("Pista chica");
         PistaG = new JButton("Pista grande");
     }
-
+    /*
+    * Metodo que da activacion de botones
+    */
     public void ActivateActionListener() {
         ARojo.addActionListener(this);
         ARosado.addActionListener(this);
@@ -56,12 +58,12 @@ public class Botones implements ActionListener {
         if (e.getSource() == PistaP) {
             pistaP = true;
             cambio = true;
-            x.setCarPosition(240, 535);
+            x.auto.getInstancia().setCarPosition(240, 535);
         }
         if (e.getSource() == PistaG) {
             pistaG = true;
             cambio = false;
-            x.setCarPosition(140, 535);
+            x.auto.getInstancia().setCarPosition(140, 535);
 
         }
     }

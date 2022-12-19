@@ -16,21 +16,13 @@ public class Map1 {
     Rectangle rec2;
     Rectangle rec3;
     Rectangle rec4;
-    Rectangle rec5;
-    Rectangle rec6;
-    Rectangle rec7;
-    Rectangle rec8;
-
+    
     public Map1() {
         maps = new ArrayList();
         rec1 = new Rectangle(0, 0, 220, 800);//left rectangle---- (x,y,ancho,alto)
         rec2 = new Rectangle(0, 0, 1300, 100);//Upper rectangle
         rec3 = new Rectangle(850, 0, 300, 800);// rigth rectangle
-        rec4 = new Rectangle(0, 680, 1300, 10);//Down rectangle
-        rec5 = new Rectangle();
-        rec6 = new Rectangle();
-        rec7 = new Rectangle();
-        rec8 = new Rectangle();
+        rec4 = new Rectangle(0, 640, 1300, 10);//Down rectangle
     }
 
     public void addRectanglemaps() {
@@ -48,7 +40,64 @@ public class Map1 {
 
     }
 
-    public void paintMap1(Graphics2D g2d, Graphics g) {
+    public void paintMap1(Graphics2D g2d, Graphics g, boolean w, boolean a, boolean s, boolean d, float count ) {
+        //Lineas del borde
+        if (w) {
+            g.setColor(Color.green);
+        } else {
+            g.setColor(Color.gray);
+        }
+        g.fillRect(1100, 500, 70, 70); // vertical ARRIBA
+
+        if (s) {
+            g.setColor(Color.green);
+        } else {
+            g.setColor(Color.gray);
+        }
+        g.fillRect(1100, 580, 70, 70);// vertical ABAJO
+
+        if (a) {
+            g.setColor(Color.red);
+        } else {
+            g.setColor(Color.gray);
+        }
+        g.fillRect(1020, 580, 70, 70);// izq
+
+        if (d) {
+            g.setColor(Color.red);
+        } else {
+            g.setColor(Color.gray);
+        }
+        g.fillRect(1180, 580, 70, 70);//der
+
+        g.setColor(Color.gray);
+        g.fillRect(1100, 300, 75, 150);
+
+        //Condiciones de barra de velocidad
+        if (count == 0 || count < 0) {
+            g.setColor(Color.gray);
+        } else if (count <= 2) {
+            g.setColor(Color.red);
+        } else if (count <= 5) {
+            g.setColor(Color.orange);
+        } else if (count >= 7 || count <= 7) {
+            g.setColor(Color.green);
+        } else {
+            g.setColor(Color.gray);
+        }
+        g.fillRect(1100, 300, 75, 150); // vertical
+
+        g.drawString("Acelerador", 1100, 290);
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("ARIAL", PLAIN, 32));
+        g.drawString(" ►", 1190, 625);
+        g.drawString(" ◄", 1025, 625);
+        g.drawString("▲", 1120, 545);
+        g.drawString("▼", 1120, 628);
+
+        
+        g.setColor(Color.gray);
         g2d.setStroke(new BasicStroke(85));
 
         g2d.drawArc(240, 530, 100, 100, 180, 90);//vuelta inicio
