@@ -25,9 +25,10 @@ public class Botones implements ActionListener {
         PistaP = new JButton("Pista chica");
         PistaG = new JButton("Pista grande");
     }
+
     /*
     * Metodo que da activacion de botones
-    */
+     */
     public void ActivateActionListener() {
         ARojo.addActionListener(this);
         ARosado.addActionListener(this);

@@ -16,13 +16,14 @@ public class Map1 {
     Rectangle rec2;
     Rectangle rec3;
     Rectangle rec4;
-    
+
     public Map1() {
         maps = new ArrayList();
         rec1 = new Rectangle(0, 0, 220, 800);//left rectangle---- (x,y,ancho,alto)
         rec2 = new Rectangle(0, 0, 1300, 100);//Upper rectangle
         rec3 = new Rectangle(850, 0, 300, 800);// rigth rectangle
         rec4 = new Rectangle(0, 640, 1300, 10);//Down rectangle
+
     }
 
     public void addRectanglemaps() {
@@ -40,7 +41,7 @@ public class Map1 {
 
     }
 
-    public void paintMap1(Graphics2D g2d, Graphics g, boolean w, boolean a, boolean s, boolean d, float count ) {
+    public void paintMap1(Graphics2D g2d, Graphics g, boolean w, boolean a, boolean s, boolean d, float count) {
         //Lineas del borde
         if (w) {
             g.setColor(Color.green);
@@ -96,7 +97,6 @@ public class Map1 {
         g.drawString("▲", 1120, 545);
         g.drawString("▼", 1120, 628);
 
-        
         g.setColor(Color.gray);
         g2d.setStroke(new BasicStroke(85));
 

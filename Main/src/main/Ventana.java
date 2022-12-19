@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
 
-    private  PanelPrincipal panel;
-    private  Dimension WindowSize = new Dimension(1300, 800);
+    private PanelPrincipal panel;
+    private Dimension WindowSize = new Dimension(1300, 800);
 
     public Ventana() {
         this.setLayout(new BorderLayout());

@@ -42,7 +42,6 @@ public class PanelPrincipal extends JPanel implements KeyListener {
 
         auto.getInstancia().paint(g, w, a, s, d, this);
 
-
         Toolkit.getDefaultToolkit().sync(); //para la inestabilidad del framerate
         g.dispose();
 
@@ -137,11 +136,14 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         g2d.setStroke(new BasicStroke(85));
 
         if (bo.getpistaP() == true && bo.getcambiopista() == true) { //Para pista Pequeña
+
             map1.paintMap1(g2d, g, w, a, s, d, auto.getInstancia().count);
 
         }
         g.setColor(Color.gray);
+
         if (bo.getpistaG() == true && bo.getcambiopista() == false) { //Para pista Grande
+
             map2.paintMap2(g2d, g, w, a, s, d, auto.getInstancia().count);
         }
         g.setColor(Color.BLACK);

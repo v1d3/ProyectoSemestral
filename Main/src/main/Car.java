@@ -56,7 +56,8 @@ public class Car {
             angle += 1f;
         }
         if (pp.collision()) {
-            if (pp.selecMap1) { //Mapa 1 (Chico)
+            if (pp.bo.getpistaP() == true && pp.bo.getcambiopista() == true) { //Mapa 1 (Chico)
+
                 if (pp.PuntoIntersectaRectangulo(pp.map1.getRectanglemaps(0))) {
                     x = 220;
                 }
@@ -94,6 +95,7 @@ public class Car {
         // update
         update_auto();
         // draw
+
         g.setColor(pp.bo.getcolorauto());
         g.fillPolygon(p);   //paint del polygon del auto
     }

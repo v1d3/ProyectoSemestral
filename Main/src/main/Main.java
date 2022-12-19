@@ -1,12 +1,10 @@
-
 package main;
-
 
 public class Main {
 
-
     public static void main(String[] args) {
-       Ventana v = new Ventana();
+        Ventana v = new Ventana();
+
     }
-    
+
 }

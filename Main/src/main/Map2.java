@@ -95,9 +95,9 @@ public class Map2 {
         g.drawString(" ◄", 1025, 625);
         g.drawString("▲", 1120, 545);
         g.drawString("▼", 1120, 628);
-        
+
         g.setColor(Color.gray);
-        
+
         g2d.drawArc(140, 560, 100, 100, 180, 90);//vuelta inicio
         g.fillRect(98, 415, 85, 155);// | despues de 1 vuelta
         g2d.drawArc(140, 325, 100, 100, 180, -90);// 2 vuelta
