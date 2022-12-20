@@ -31,7 +31,8 @@ public class Botones implements ActionListener {
     /**Hacemos una instancia del panel principal para manejar los eventos*/
     PanelPrincipal x;
     
-    /** Constructor de la clase, donde inicializamos nuestras variables*/
+    /** Constructor de la clase, donde inicializamos nuestras variabl
+     * @param x*/
     public Botones(PanelPrincipal x) {
         this.x = x;
         ARojo = new JButton("Rojo");
