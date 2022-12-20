@@ -12,8 +12,7 @@ import javax.swing.JFrame;
 public class Ventana extends JFrame {
 
     /**Instanciamos las variables
-     * @param panel llamado del panel principal
-     * @param WindowSize dimension de la ventana
+    
      */
     private PanelPrincipal panel;
     private Dimension WindowSize = new Dimension(1300, 800);

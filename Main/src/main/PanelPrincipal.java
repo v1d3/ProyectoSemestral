@@ -14,10 +14,7 @@ import javax.swing.JPanel;
 public class PanelPrincipal extends JPanel implements KeyListener {
     
     /** Instanciamos las clases
-     * @param bo los botones
-     * @param map1 mapa pequeño
-     * @param map2 mapa grande
-     * @param car auto
+     
      */
     Botones bo;
     Map1 map1;
