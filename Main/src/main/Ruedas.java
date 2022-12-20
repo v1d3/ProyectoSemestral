@@ -1,21 +1,32 @@
 package main;
 
 import java.awt.*;
-
+/** Clase Ruedas donde le daremos las posiciones y sus condiciones de giro
+    * @author Matias
+    * @author Yulissa
+    * @author Cristobal
+    * @version 2, 17/12
+    */
 public class Ruedas {
 
+    /** Declaracion de las variables
+     * @param x,y las posiciones de las ruedas
+     * @param angle para obtener el angulo de giro de las ruedas
+     * @param p cuepo del auto donde iran las ruedas
+     */
     boolean a, d, t;
     float x, y;
     float ax, ay, aAngle;
     float angle = 0f;
     Polygon p;
 
+    /**Contructor donde definir las ruedas*/
     public Ruedas(float x, float y, boolean t) {
         this.x = x;
         this.y = y;
-        this.t = t; //Variable para definir si es rueda delantera o trasera
+        this.t = t; 
     }
-
+    
     public void paint(Graphics g, float x1, float y1, float angle1, boolean a, boolean d) {
         ax = x1;
         ay = y1;

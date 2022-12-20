@@ -5,18 +5,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
+/**
+ * Clase Botones para elegir los colores del auto y el tamaño de la pista
+ * @author Yulissa
+ * @author Cristobal
+ * @author matias
+ * @version 3, fecha 19/12
+ */
 public class Botones implements ActionListener {
-
+    
+    /** variables JButton para eleccion de colores*/
     public JButton ARojo, ARosado, AAzul;
+    
+    /** variables JButton para eleccion de tamaños de pistas*/
     public JButton PistaP, PistaG;
-
-    //boolean Red=false,Pink=false,Blue=false;
+    
+    /** Utilizamos esto para otorgarles el tipo de color al auto*/
     Color colorauto;
+    
+    /** Inicializamos las pistas en falsas para que al momento de usarlas cambien a true*/
     boolean pistaP = false;
     boolean pistaG = false;
     boolean cambio = false;
+    
+    /**Hacemos una instancia del panel principal para manejar los eventos*/
     PanelPrincipal x;
-
+    
+    /** Constructor de la clase, donde inicializamos nuestras variables*/
     public Botones(PanelPrincipal x) {
         this.x = x;
         ARojo = new JButton("Rojo");
@@ -26,8 +41,9 @@ public class Botones implements ActionListener {
         PistaG = new JButton("Pista grande");
     }
 
-    /*
-    * Metodo que da activacion de botones
+    
+    /** Metodo que da activacion de botones
+     * Ocupamos el Listener del mouse
      */
     public void ActivateActionListener() {
         ARojo.addActionListener(this);
@@ -36,7 +52,10 @@ public class Botones implements ActionListener {
 
         PistaP.addActionListener(this);
         PistaG.addActionListener(this);
-
+    
+     /** Uso del setFocusable para darle una "Desactivasion" a los botones pulsados
+     * Esto porque nos surgia un error al pulsar los botones.
+     */
         ARojo.setFocusable(false);
         ARosado.setFocusable(false);
         AAzul.setFocusable(false);
@@ -45,6 +64,12 @@ public class Botones implements ActionListener {
     }
 
     @Override
+    /** Otrogamos los colores del auto y tamaños de pista
+     * @param colorauto almacena el color elegido
+     * @param PistaP tamaño pequeña, y posiciona el carro en coordenadas de inicio
+     * @param PistaG tamaño grande, y posiciona el carro en coordenadas de inicio
+     
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == ARojo) {
             colorauto = Color.red;
@@ -68,7 +93,8 @@ public class Botones implements ActionListener {
 
         }
     }
-
+    /** Hacemos los getters */
+    
     public Color getcolorauto() {
         return colorauto;
     }
@@ -84,7 +110,7 @@ public class Botones implements ActionListener {
     public boolean getcambiopista() {
         return cambio;
     }
-
+    /** Añadimos los Botones en el Panel*/
     public void addBotonestoPanel(PanelPrincipal pp) {
 
         pp.add(ARojo);
@@ -93,7 +119,7 @@ public class Botones implements ActionListener {
         pp.add(PistaP);
         pp.add(PistaG);
     }
-
+    /** Posiciones de los botones en el Panel*/
     public void addButtonsCoordinate() {
 
         ARojo.setBounds(1020, 170, 80, 50);

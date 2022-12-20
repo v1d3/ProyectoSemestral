@@ -3,31 +3,52 @@ package main;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
+    /** Clase auto para constuirlo y configurarlo
+    * @author Matias
+    * @author Yulissa
+    * @author Cristobal
+    */
 public class Car {
-
+   
+    /** 
+    * @param p figura para el auto
+    * @param r1,r2,r3,r4 las ruedas
+    * @param x,y coordenadas de posiciones del auto
+    * @param angle angulo de giro de las ruedas
+    * @param instanciaAuto instanciamos un auto
+    */
     Polygon p;//Figura
     Ruedas r1, r2, r3, r4;
     float x = 930f; //Coordenada x
     float y = 650f;//Coordenada y
     float angle = 270f; //Angulo
     float count = 0;
-    private boolean a, s, w, d;
-    PanelPrincipal pp;
+   // private boolean a, s, w, d;
+    //PanelPrincipal pp;//no estan siendo necesario estas no se pq
     private static Car instanciaAuto = new Car();
 
-    private Car() {
+    /** Contructor donde inicalizamos las ruedas*/
+    public Car(){//aqui cambie el privatte por el public
 
         r1 = new Ruedas(20, -15, true); //Adelante
         r2 = new Ruedas(-20, -20, false);
         r3 = new Ruedas(-20, 20, false);
         r4 = new Ruedas(20, 15, true);  //Adelante
     }
-
+    
+    /** @return instancia de auto*/
     public static Car getInstancia() {
         return instanciaAuto;
     }
-
+    
+    /** Metodo donde creamos los eventos del auto, y graficamos las ruedas sus ruedas
+     * @param g pintar las ruedas
+     * @param w,a,s,d booleans para el movement del auto
+     * @param pp Instancia del Panel Principal
+     */
     public void paint(Graphics g, boolean w, boolean a, boolean s, boolean d, PanelPrincipal pp) {
+        
+        /**Movimiento del auto*/
         if (w) {
             if (count <= 7) {
                 x += 0.4f * count * Math.cos(Math.toRadians(angle));
@@ -55,6 +76,8 @@ public class Car {
         if (d) {
             angle += 1f;
         }
+        
+        /**Colisiones con la barrera del mapa*/
         if (pp.collision()) {
             if (pp.bo.getpistaP() == true && pp.bo.getcambiopista() == true) { //Mapa 1 (Chico)
 
@@ -87,47 +110,50 @@ public class Car {
             }
         }
 
-        // update and paint wheels
-        r1.paint(g, x, y, angle, a, d); //Rueda
-        r2.paint(g, x, y, angle, a, d); //Rueda
-        r3.paint(g, x, y, angle, a, d); //Rueda
-        r4.paint(g, x, y, angle, a, d); //Rueda
-        // update
+        /**Pintamos y actualizamos las ruedas*/
+        r1.paint(g, x, y, angle, a, d); 
+        r2.paint(g, x, y, angle, a, d); 
+        r3.paint(g, x, y, angle, a, d); 
+        r4.paint(g, x, y, angle, a, d); 
+      
         update_auto();
-        // draw
-
+        
+        /**Pintamos el cuerpo del auto, osea el polygon*/
         g.setColor(pp.bo.getcolorauto());
-        g.fillPolygon(p);   //paint del polygon del auto
+        g.fillPolygon(p);
     }
-
+    
+    /**actualizacion de la posicion del auto*/
     public void update_auto() {
         float cos = (float) Math.cos(Math.toRadians(angle));
         float sin = (float) Math.sin(Math.toRadians(angle));
 
         p = new Polygon();
 
-        //para los sigueintes puntos se considera que el auto está en horizontal (angulo 0)
-        //punto adelante-izquierda del auto
+        
+        /**Consideramos que el auto esta en horizontal(Angulo 0)
+         * Punto adelante-izquierda del auto
+         * Punto atras-izquierda del auto
+         * Punto atras-derecha del auto
+         * Punto adelante-derecha del auto
+         */
         float px = 20f;
         float py = -7f;
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
 
-        //punto atras-izquierda del auto
-        px = -20f; //Mientras mas positivo derechas
-        py = -14f; //Mientras mas positivo baja
+        px = -20f; 
+        py = -14f;
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
 
-        //punto atras-derecha del auto
         px = -20f;
         py = 14f;
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
 
-        //punto adelante-derecha del auto
         px = 20f;
         py = 7f;
         p.addPoint((int) (x + px * cos - py * sin), (int) (y + px * sin + py * cos));
     }
-
+    /**Seteamos la posicion del carro*/
     public void setCarPosition(int x, int y) {
         this.x = x;
         this.y = y;

@@ -5,18 +5,36 @@ import static java.awt.Font.PLAIN;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
-
+/** Clase Panel Principal para constuir el panel Y importar todo lo grafico
+    * @author Matias
+    * @author Yulissa
+    * @author Cristobal
+    * @version 4, 18/12
+    */
 public class PanelPrincipal extends JPanel implements KeyListener {
-
+    
+    /** Instanciamos las clases
+     * @param bo los botones
+     * @param map1 mapa pequeño
+     * @param map2 mapa grande
+     * @param car auto
+     */
     Botones bo;
     Map1 map1;
     Map2 map2;
     Car auto;
+    
+    /** variables para controlar los eventos
+     * Control del auto
+     * Seleccion del mapa a utilizar
+     */
     public boolean w, a, s, d, selecMap1, selecMap2;
 
+    /** Constructor donde inicializamos nuestro parametros*/
     public PanelPrincipal() {
 
         bo = new Botones(this);
+        /** Fondo azul y activacion de los metodos de los botones*/
         this.setBackground(Color.blue);
         bo.addBotonestoPanel(this);
         bo.ActivateActionListener();
@@ -29,31 +47,40 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         map2.addRectanglemaps();
     }
 
-    /**
-     *
-     * @param g
+    /** Graficamos y pintamos el Panel
+     * @param g pinta el mapa
      */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        //Paint de mapa
+        
+        /**Paint de mapa*/
         paintMapa(g);
-        // input ----------------------------------------
-
+        
+        /** Obtenemos la instancia de nuestro auto y lo pintamos*/
         auto.getInstancia().paint(g, w, a, s, d, this);
 
-        Toolkit.getDefaultToolkit().sync(); //para la inestabilidad del framerate
+        /** Aqui evitamos la inestabilidad del framerate*/
+        Toolkit.getDefaultToolkit().sync(); 
         g.dispose();
 
         repaint();
     }
-
+    
+    /** Metodo donde se da la interseccion del auto con nuestra barrera del mapa
+     * @return el punto o coordenada de colision 
+     */
     public boolean PuntoIntersectaRectangulo(Rectangle rec) {
         return auto.getInstancia().x > rec.x && auto.getInstancia().x < rec.x + rec.width && auto.getInstancia().y > rec.y && auto.getInstancia().y < rec.y + rec.height;
     }
-
+    
+    /**Cargamos los rectangulos dependendiendo del tamaño de la pista
+     * sujeto a los posibles cambios de mapa
+     * primero pista Pequeña
+     * segundo pista Grande
+     */
     public boolean collision() {
-        if (bo.getpistaP() == true && bo.getcambiopista() == true) { //Para pista Pequeña
+        if (bo.getpistaP() == true && bo.getcambiopista() == true) { 
             selecMap1 = true;
             selecMap2 = false;
             for (int i = 0; i < map1.maps.size(); i++) {
@@ -62,7 +89,7 @@ public class PanelPrincipal extends JPanel implements KeyListener {
                 }
             }
         }
-        if (bo.getpistaG() == true && bo.getcambiopista() == false) { //Para pista Grande
+        if (bo.getpistaG() == true && bo.getcambiopista() == false) { 
             selecMap2 = true;
             selecMap1 = false;
             for (int i = 0; i < map2.maps.size(); i++) {
@@ -79,6 +106,7 @@ public class PanelPrincipal extends JPanel implements KeyListener {
 
     }
 
+    /**Metodo donde activamos las el teclado para nuestras respectivas wasd */
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -95,7 +123,7 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         }
 
     }
-
+    /** cambiamos a false nuestras teclas wasd en caso de no estar apretadas*/
     @Override
     public void keyReleased(KeyEvent e) {
 
@@ -112,7 +140,13 @@ public class PanelPrincipal extends JPanel implements KeyListener {
             d = false;
         }
     }
-
+    
+    /**Graficamos nustro fondo ddel mapa
+     * Verde
+     * Blanco por los bordes
+     * Diseño sobre el blanco de nuestros bordes
+     * 
+     */
     public void paintMapa(Graphics g) {
 
         g.setColor(Color.green);
@@ -124,10 +158,14 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         g.fillRect(965, 30, 23, 700);//h
         g.setColor(Color.BLACK);
         g.setFont(new Font("ARIAL", PLAIN, 16));
+       
+        /**Pintamos diseño sobre la horizontal*/
         for (int i = 0; i < 875; i += 175) {
             g.drawString("▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀", 30 + i, 45);
             g.drawString("▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀", 30 + i, 725);
         }
+        
+        /**Pintamos diseño sobre la vertical*/
         for (int i = 0; i < 670; i += 20) {
             g.drawString("▀▄", 30, 45 + i);
             g.drawString("▀▄", 965, 55 + i);
@@ -135,6 +173,7 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setStroke(new BasicStroke(85));
 
+        /**Cambios de pista graficados*/
         if (bo.getpistaP() == true && bo.getcambiopista() == true) { //Para pista Pequeña
 
             map1.paintMap1(g2d, g, w, a, s, d, auto.getInstancia().count);
