@@ -36,7 +36,8 @@ public class Car {
         r4 = new Ruedas(20, 15, true);  //Adelante
     }
     
-    /** @return instancia de auto*/
+    /** Getter
+     * @return instancia de auto*/
     public static Car getInstancia() {
         return instanciaAuto;
     }

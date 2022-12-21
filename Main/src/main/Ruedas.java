@@ -20,13 +20,14 @@ public class Ruedas {
     float angle = 0f;
     Polygon p;
 
-    /**Contructor donde definir las ruedas*/
+    /**Contructor donde definimos las ruedas*/
     public Ruedas(float x, float y, boolean t) {
         this.x = x;
         this.y = y;
         this.t = t; 
     }
     
+    /**Graficamos las ruedas y sus eventos*/
     public void paint(Graphics g, float x1, float y1, float angle1, boolean a, boolean d) {
         ax = x1;
         ay = y1;
@@ -60,6 +61,9 @@ public class Ruedas {
 
     }
 
+    /**Metodo donde acutalizamos las variaciones en las ruedas
+     * Tambien las añadimos junto al auto
+     */
     public void update_ruedas() {
         //Angulo respecto el auto
         float cos = (float) Math.cos(Math.toRadians(aAngle));

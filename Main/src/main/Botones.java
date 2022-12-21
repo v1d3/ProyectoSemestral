@@ -28,11 +28,13 @@ public class Botones implements ActionListener {
     boolean pistaG = false;
     boolean cambio = false;
     
-    /**Hacemos una instancia del panel principal para manejar los eventos*/
+    /**Hacemos una instancia del panel principal para manejar los eventos
+     * @param x Instancia de Panel Principal
+     */
     PanelPrincipal x;
     
-    /** Constructor de la clase, donde inicializamos nuestras variabl
-     * @param x*/
+    /** Constructor de la clase, donde inicializamos nuestras variable
+    */
     public Botones(PanelPrincipal x) {
         this.x = x;
         ARojo = new JButton("Rojo");
@@ -65,11 +67,11 @@ public class Botones implements ActionListener {
     }
 
     @Override
+    
     /** Otrogamos los colores del auto y tamaños de pista
      * @param colorauto almacena el color elegido
      * @param PistaP tamaño pequeña, y posiciona el carro en coordenadas de inicio
      * @param PistaG tamaño grande, y posiciona el carro en coordenadas de inicio
-     
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == ARojo) {
@@ -91,7 +93,7 @@ public class Botones implements ActionListener {
             pistaG = true;
             cambio = false;
             x.auto.getInstancia().setCarPosition(140, 535);
-
+                            
         }
     }
     /** Hacemos los getters */
@@ -99,15 +101,15 @@ public class Botones implements ActionListener {
     public Color getcolorauto() {
         return colorauto;
     }
-
+    /** Hacemos los getters */
     public boolean getpistaP() {
         return pistaP;
     }
-
+    /** Hacemos los getters */
     public boolean getpistaG() {
         return pistaG;
     }
-
+    /** Hacemos los getters */
     public boolean getcambiopista() {
         return cambio;
     }

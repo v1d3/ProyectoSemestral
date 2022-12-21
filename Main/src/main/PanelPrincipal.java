@@ -13,9 +13,7 @@ import javax.swing.JPanel;
     */
 public class PanelPrincipal extends JPanel implements KeyListener {
     
-    /** Instanciamos las clases
-     
-     */
+    /** Instanciamos las clases*/
     Botones bo;
     Map1 map1;
     Map2 map2;
@@ -97,13 +95,13 @@ public class PanelPrincipal extends JPanel implements KeyListener {
         }
         return false;
     }
-
+    /**Ejecutamos esto para cuando se presiona una tecla*/
     @Override
     public void keyTyped(KeyEvent e) {
 
     }
 
-    /**Metodo donde activamos las el teclado para nuestras respectivas wasd */
+    /**Metodo que toma el evento del teclado al presionar las WASD */
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
